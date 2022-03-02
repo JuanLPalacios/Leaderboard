@@ -17,6 +17,7 @@ export default class App {
       new FormData(this.form).forEach((value, key) => { newScore[key] = value; });
       await add(newScore);
       this.scores = await get();
+      this.form.reset();
     });
     this.refresh.addEventListener('click', async (e) => {
       e.preventDefault();
