@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { add, get, init } from './funtions';
+import { add, get } from './funtions';
 
 export default class App {
   constructor(list, form, refresh) {
@@ -10,7 +10,7 @@ export default class App {
   }
 
   async init() {
-    await init();
+    this.scores = await get();
     this.form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const newScore = {};
