@@ -35,6 +35,6 @@ export default class App {
   }
 
   update() {
-    this.list.innerHTML = this._scores.map((item) => `<li>${item.name}:${item.score}</li>`).join('');
+    this.list.innerHTML = this._scores.map((item) => `<li>${item.user}: ${item.score}</li>`).join('');
   }
 }
