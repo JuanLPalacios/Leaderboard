@@ -10,6 +10,7 @@ export default class App {
   }
 
   async init() {
+    this.scores = await get();
     this.form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const newScore = {};
