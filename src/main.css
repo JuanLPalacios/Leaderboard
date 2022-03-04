@@ -1,4 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap');
+
+:root {
+  --bg-color-1: #f7ffb7;
+  --bg-color-2: #a5d145;
+  --bg-color-3: #af5314;
+  --bg-color-4: #501a68;
+}
 * { box-sizing: border-box; }
+
+audio {
+  display: none;
+}
 
 button,
 input {
@@ -6,8 +18,12 @@ input {
 }
 
 input {
+  border-radius: 50px 0;
   margin-bottom: 1em;
-  border: solid 1px black;
+  border: solid 3px var(--bg-color-4);
+  background: var(--bg-color-1);
+  color: var(--bg-color-3);
+  font-weight: 700;
 }
 
 h2 {
@@ -21,29 +37,121 @@ header.line {
 }
 
 body {
-  font-size: 2rem;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.8rem;
+  background: var(--bg-color-2);
+  color: var(--bg-color-4);
+  margin: 0;
 }
 
 ul.table {
   list-style: none;
   padding: 0;
-  border: solid 3px black;
+  border: solid 3px var(--bg-color-4);
+  background: var(--bg-color-2);
   margin: 0;
+  overflow-y: auto;
+  height: 508px;
+  border-radius: 20px 0 0 20px;
 }
 
 ul.table > li,
 button,
 input {
-  padding: 5px 0.5em;
+  padding: 8px 0.7em;
 }
 
-ul.table > li:nth-child(even) {
-  background: #cfcfcf;
+ul.table > li {
+  border: solid 2px var(--bg-color-3);
+  border-width: 2px 0;
+  background: var(--bg-color-1);
+  padding: 2px 0.7em;
+}
+
+li.under-10 {
+  opacity: 0.8;
+}
+
+li.medal-3::before,
+li.medal-2::before,
+.first-place::before {
+  box-sizing: border-box;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 19px;
+  line-height: 32px;
+  padding-left: 9px;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin: 0 4px;
+  text-shadow: 0 0 3px #0000006b;
+  border: solid 3px #f9e78d;
+  border-radius: 22px;
+  box-shadow: inset 2px 1px 6px #0003;
+  transform-origin: center center;
+  transform: scale(1.2) translate(-5px, -2px);
+  transition: 0.3s;
+}
+
+li.medal-3::before {
+  content: '3';
+  color: #fbcbbd;
+  background: #ffc36a;
+  border: solid 3px #ffd89e;
+}
+
+li.medal-2::before {
+  content: '2';
+  color: #e5fffd;
+  background: #d1f4ff;
+  border: solid 3px #cef1f5;
+}
+
+li.first-place::before {
+  content: '1';
+  color: #fbebbd;
+  background: #ffe771;
+  border: solid 3px #f9e78d;
+  transform: scale(1.5) translate(-5px, -2px);
+}
+
+li.first-place.new::before {
+  transform: scale(2) translate(-5px, -2px);
+}
+
+li.new::before {
+  transform: scale(0) translate(-5px, -2px);
 }
 
 body > header,
 main {
   padding: 0 4%;
+}
+
+header.navbar {
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 6px;
+  font-size: 1.8rem;
+  background-color: var(--bg-color-4);
+  color: var(--bg-color-1);
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+header.navbar::after {
+  content: ' ';
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  right: 8vw;
+
+  /* top: 2vh; */
+  background-image: url(./img/trophy_01.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotate(33deg);
 }
 
 h1 {
@@ -55,6 +163,13 @@ form {
   display: flex;
   flex-direction: column;
   align-content: stretch;
+}
+
+button {
+  border: none;
+  background: var(--bg-color-3);
+  font-weight: 700;
+  color: var(--bg-color-1);
 }
 
 form button {

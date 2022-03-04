@@ -12,17 +12,21 @@ export default class App {
 
   async init() {
     this.scores = await get();
+    this.update();
     this.form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const newScore = {};
       new FormData(this.form).forEach((value, key) => { newScore[key] = value; });
       await add(newScore);
       this.scores = await get();
+      this.update(newScore);
+      this.playResults(newScore);
       this.form.reset();
     });
     this.refresh.addEventListener('click', async (e) => {
       e.preventDefault();
       this.scores = await get();
+      this.update();
     });
   }
 
@@ -33,21 +37,56 @@ export default class App {
   set scores(val) {
     this._scores = val;
     this._scores.sort((a, b) => b.score - a.score);
-    this.update();
   }
-  
-  play(id) {
-    const sound = this.sounds[id];
-    if(i==1) {
-        if (audio.paused) {
-          audio.play();
-      }else{
-          audio.currentTime = 0
+
+  playResults(newScore) {
+    let pos = 1;
+    let lastScore = this._scores[0].score;
+    for (let i = 0; i < this._scores.length; i++) {
+      const score = this._scores[i];
+      if (lastScore > score.score) {
+        lastScore = score.score;
+        pos++;
+      }
+      if (((newScore.score == score.score) && (newScore.user == score.user)) || (i >= 10)) {
+        if (pos == 1) this.play('first-place');
+        else if (i < 10) {
+          this.play('top-10');
+          if (pos < 4) setTimeout(() => this.play('medal'), 2000);
+        }
+        else this.play('under-10');
+        break;
       }
     }
   }
 
-  update() {
-    this.list.innerHTML = this._scores.map((item) => `<li>${item.user}: ${item.score}</li>`).join('');
+  play(id) {
+    const audio = this.sounds[id];
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.currentTime = 0
+    }
+  }
+
+  update(newScore = {}) {
+    let pos = 1;
+    let lastScore = (this._scores.length>0)? this._scores[0].score:0;
+    this.list.innerHTML = this._scores.map((score, i) => {
+      let classList = [];
+      if (lastScore > score.score) {
+        lastScore = score.score;
+        pos++;
+      }
+     if (pos == 1) classList.push('first-place');
+      else if (i < 10) {
+        classList.push('top-10');
+        if (pos < 4) classList.push(`medal-${pos}`);
+      }
+      else classList.push('under-10');
+      if ((newScore.score == score.score) && (newScore.user == score.user)) classList.push('new');
+      return `<li class="${classList.join(' ')}">${score.user}: ${score.score}</li>`
+    }).join('');
+    if(newScore.user)setTimeout(() => document.querySelector('.new').classList.remove('new'), 2000);
   }
 }
