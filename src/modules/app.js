@@ -42,19 +42,18 @@ export default class App {
   playResults(newScore) {
     let pos = 1;
     let lastScore = this._scores[0].score;
-    for (let i = 0; i < this._scores.length; i++) {
+    for (let i = 0; i < this._scores.length; i += 1) {
       const score = this._scores[i];
       if (lastScore > score.score) {
         lastScore = score.score;
-        pos++;
+        pos += 1;
       }
-      if (((newScore.score == score.score) && (newScore.user == score.user)) || (i >= 10)) {
-        if (pos == 1) this.play('first-place');
+      if (((newScore.score === score.score) && (newScore.user === score.user)) || (i >= 10)) {
+        if (pos === 1) this.play('first-place');
         else if (i < 10) {
           this.play('top-10');
           if (pos < 4) setTimeout(() => this.play('medal'), 2000);
-        }
-        else this.play('under-10');
+        } else this.play('under-10');
         break;
       }
     }
@@ -65,28 +64,27 @@ export default class App {
     if (audio.paused) {
       audio.play();
     } else {
-      audio.currentTime = 0
+      audio.currentTime = 0;
     }
   }
 
   update(newScore = {}) {
     let pos = 1;
-    let lastScore = (this._scores.length>0)? this._scores[0].score:0;
+    let lastScore = (this._scores.length > 0) ? this._scores[0].score : 0;
     this.list.innerHTML = this._scores.map((score, i) => {
-      let classList = [];
+      const classList = [];
       if (lastScore > score.score) {
         lastScore = score.score;
-        pos++;
+        pos += 1;
       }
-     if (pos == 1) classList.push('first-place');
+      if (pos === 1) classList.push('first-place');
       else if (i < 10) {
         classList.push('top-10');
         if (pos < 4) classList.push(`medal-${pos}`);
-      }
-      else classList.push('under-10');
-      if ((newScore.score == score.score) && (newScore.user == score.user)) classList.push('new');
-      return `<li class="${classList.join(' ')}">${score.user}: ${score.score}</li>`
+      } else classList.push('under-10');
+      if ((newScore.score === score.score) && (newScore.user === score.user)) classList.push('new');
+      return `<li class="${classList.join(' ')}">${score.user}: ${score.score}</li>`;
     }).join('');
-    if(newScore.user)setTimeout(() => document.querySelector('.new').classList.remove('new'), 2000);
+    if (newScore.user)setTimeout(() => document.querySelector('.new').classList.remove('new'), 2000);
   }
 }
