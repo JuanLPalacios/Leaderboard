@@ -2,11 +2,12 @@
 import { add, get } from './funtions';
 
 export default class App {
-  constructor(list, form, refresh) {
+  constructor(list, form, refresh, sounds) {
     this.list = list;
     this.form = form;
     this.refresh = refresh;
     this._scores = [];
+    this.sounds = sounds;
   }
 
   async init() {
@@ -33,6 +34,17 @@ export default class App {
     this._scores = val;
     this._scores.sort((a, b) => b.score - a.score);
     this.update();
+  }
+  
+  play(id) {
+    const sound = this.sounds[id];
+    if(i==1) {
+        if (audio.paused) {
+          audio.play();
+      }else{
+          audio.currentTime = 0
+      }
+    }
   }
 
   update() {
