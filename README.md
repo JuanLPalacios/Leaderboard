@@ -49,6 +49,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - [microverse](http://www.microverse.org) for the config templates
+- [Attribute Little Robot Sound Factory](www.littlerobotsoundfactory.com), for the sounds
 
 ## 📝 License
 
