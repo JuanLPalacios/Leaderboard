@@ -14,7 +14,7 @@ audio {
 
 button,
 input {
-  font-size: 2rem;
+  font-size: 18px;
 }
 
 input {
@@ -38,7 +38,7 @@ header.line {
 
 body {
   font-family: 'Permanent Marker', cursive;
-  font-size: 1.8rem;
+  font-size: 16px;
   background: var(--bg-color-2);
   color: var(--bg-color-4);
   margin: 0;
@@ -51,14 +51,14 @@ ul.table {
   background: var(--bg-color-2);
   margin: 0;
   overflow-y: auto;
-  height: 508px;
+  height: 316px;
   border-radius: 20px 0 0 20px;
 }
 
 ul.table > li,
 button,
 input {
-  padding: 8px 0.7em;
+  padding: 8px 1em;
 }
 
 ul.table > li {
@@ -77,20 +77,21 @@ li.medal-2::before,
 .first-place::before {
   box-sizing: border-box;
   font-family: 'Bebas Neue', cursive;
-  font-size: 19px;
-  line-height: 32px;
-  padding-left: 9px;
+  font-size: 11px;
+  line-height: 15px;
+  padding-left: 4px;
   display: inline-block;
-  width: 32px;
-  height: 32px;
+  width: 18px;
+  height: 18px;
   margin: 0 4px;
   text-shadow: 0 0 3px #0000006b;
   border: solid 3px #f9e78d;
   border-radius: 22px;
   box-shadow: inset 2px 1px 6px #0003;
   transform-origin: center center;
-  transform: scale(1.2) translate(-5px, -2px);
+  transform: scale(1.5) translate(-5px, 2px);
   transition: 0.3s;
+  overflow: hidden;
 }
 
 li.medal-3::before {
@@ -112,11 +113,11 @@ li.first-place::before {
   color: #fbebbd;
   background: #ffe771;
   border: solid 3px #f9e78d;
-  transform: scale(1.5) translate(-5px, -2px);
+  transform: scale(1.9) translate(-4px, 2px);
 }
 
 li.first-place.new::before {
-  transform: scale(2) translate(-5px, -2px);
+  transform: scale(3) translate(12px, 5px);
 }
 
 li.new::before {
