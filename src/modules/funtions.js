@@ -1,4 +1,4 @@
-const GAME_KEY = 'dLFTQGSJZwzmh6iLdNsp';
+const GAME_KEY = 'y1Y8frWTDlC3lZtFMOIV';
 const BASE_URL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
 
 export const add = async (item) => {

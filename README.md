@@ -2,6 +2,8 @@
 
 # Lederboard
 
+![screenshot](screenshot.png)
+
 The leaderboard website displays scores submitted by different players. It also allows you to submit your score. All data is preserved thanks to the external API
 
 ## Getting Started
@@ -49,6 +51,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - [microverse](http://www.microverse.org) for the config templates
+- [Attribute Little Robot Sound Factory](www.littlerobotsoundfactory.com), for the sounds
 
 ## 📝 License
 
